@@ -128,7 +128,7 @@ def order():
             return redirect(url_for('student'))
         use_subscription(user.id, meal_type)
         order_obj, total = create_order(user.id, meal_type, item_ids, is_subscription=True)
-        add_notification(user.id, f'Заказ по абонементу оформлен. Осталось: {sub.meals_left - 1}')
+        add_notification(user.id, f'Заказ по абонементу оформлен. Осталось: {sub.meals_left}')
     else:
         items = [MenuItem.query.get(i) for i in item_ids]
         total = sum(i.price for i in items if i)
